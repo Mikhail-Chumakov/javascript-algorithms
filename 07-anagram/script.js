@@ -7,12 +7,34 @@
  * нет пробелов и знаков препинания.
  * 
 */
+function createСharObject (str) {
+ const charObj = {};
+ str = str.toLowerCase();
+ for(let i of str){
+     charObj[i] = charObj[i] + 1 || 1;
+ }
+ return charObj;
+}
 
 function anagram(str1, str2) {
-    // Напишите код здесь
+  const strNew1 = createСharObject(str1);
+  const strNew2 = createСharObject(str2);
+
+  if(Object.keys(strNew1).length !== Object.keys(strNew2).length){
+    return false;
+  }
+
+  for (let j in strNew1){
+    if(strNew1[j] !== strNew2[j]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // Протестируйте решение, вызывая функцию с разными аргументами:
 
 console.log(anagram('finder', 'Friend')); // true
 console.log(anagram('hello', 'bye')); // false
+
+console.log(anagram('up', 'UP'));// выдается true

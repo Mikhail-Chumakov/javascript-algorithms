@@ -8,7 +8,8 @@
 */
 
 function uniq(arr) {
-    // Напишите код здесь
+  new Set(arr);
+  return Array.from(new Set(arr));
 }
 
 // Протестируйте решение, вызывая функцию с разными аргументами:
